@@ -1,0 +1,11 @@
+logs/
+mnt/
+__pycache__/
+
+*~
+*.sw?
+*.pyc
+*.bak
+*.pem
+*.secret
+*.pass

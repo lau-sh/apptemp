@@ -1,0 +1,34 @@
+version: '3.8'
+services:
+  apptemp:
+    build: '.'
+    image: 'apptemp'
+    volumes:
+      - 'apptemp_vol:/srv/apptemp/data'
+      - 'nginx_vol:/srv/nginx'
+      - 'postgres_vol:/srv/postgres'
+    stop_signal: SIGINT
+    environment:
+      - TZ=America/New_York
+    ports:
+      - 80:80
+      - 443:443
+volumes:
+  apptemp_vol:
+    driver: local
+    driver_opts:
+      type: none
+      device: /srv/data/apptemp
+      o: bind
+  nginx_vol:
+    driver: local
+    driver_opts:
+      type: none
+      device: /srv/data/nginx
+      o: bind
+  postgres_vol:
+    driver: local
+    driver_opts:
+      type: none
+      device: /srv/data/postgres
+      o: bind
